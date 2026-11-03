@@ -55,6 +55,9 @@ mkdir -p "$BUILD_DIR"
 rsync -a "$THEME_DIR/" "$BUILD_DIR/" \
 	--exclude='.git' \
 	--exclude='.gitignore' \
+	--exclude='.gitattributes' \
+	--exclude='* 2.*' \
+	--exclude='* 2' \
 	--exclude='.DS_Store' \
 	--exclude='bin' \
 	--exclude='*.zip' \

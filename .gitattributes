@@ -1,0 +1,18 @@
+# Left out of the package a release tag publishes.
+#
+# Warden publishes GitHub's archive of the tag, and GitHub's archive honours
+# export-ignore. This list mirrors the exclusions in bin/build-zip.sh, so a tag
+# ships the same files that script's zip does. The AGENT.md notes never reach a
+# client site this way.
+/bin                    export-ignore
+/docs                   export-ignore
+/.github                export-ignore
+AGENT.md                export-ignore
+/README.md              export-ignore
+/CHANGELOG.md           export-ignore
+/ROADMAP.md             export-ignore
+/SECURITY.md            export-ignore
+/languages/*.po         export-ignore
+/languages/*.pot        export-ignore
+.gitignore              export-ignore
+.gitattributes          export-ignore

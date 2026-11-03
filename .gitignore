@@ -9,8 +9,15 @@
 # ---------------------------------------------------------------------------
 AGENT.md
 
+# The assistant's own project file: stays on the developer's disk.
+CLAUDE.md
+
 # Build output
 *.zip
+
+# Stray Finder duplicates ("forms 2.php", "main 2.css", ...): never part of the theme
+* 2.*
+* 2
 
 # OS and editor cruft
 .DS_Store

@@ -11,6 +11,17 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.1.1] — 2026-11-03
+
+### Changed
+
+- The ASE override example in `inc/overrides/ase.php` used a key that does not exist
+  (`login_attempts_limit`); it now shows the real one, `login_fails_allowed`.
+- `.gitignore` ignores stray Finder duplicates (`forms 2.php`) and `CLAUDE.md`; `bin/build-zip.sh` leaves
+  such duplicates out of the zip; a `.gitattributes` keeps repository-only files out of the package a
+  release tag publishes (the parent theme already does this).
+- README: the optional shop switch and the payment kill switch, and how to turn each on.
+
 ## [1.1.0] — 2026-11-03
 
 Requires the parent theme 1.15.0 or later for the shop switch to do anything.

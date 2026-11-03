@@ -32,9 +32,9 @@
 
 add_filter( 'devbase/ase/defaults', function ( array $defaults ) {
 	// Example — a fresh site for this client starts with the login limit
-	// at 3 attempts instead of the base theme's default:
+	// at 5 failed attempts instead of the base theme's default of 3:
 	//
-	// $defaults['login_attempts_limit'] = 3;
+	// $defaults['login_fails_allowed'] = 5;
 
 	return $defaults;
 } );
