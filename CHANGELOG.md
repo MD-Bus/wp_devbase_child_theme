@@ -11,7 +11,16 @@ starter itself.
 
 ## [Unreleased]
 
-Nothing yet.
+## [1.1.0] — 2026-11-03
+
+Requires the parent theme 1.15.0 or later for the shop switch to do anything.
+
+### Added
+
+- **`inc/overrides/woocommerce.php`**, the switch that makes a client site a shop. **Off by default**: set
+  `$is_shop` to `true` and the parent theme installs WooCommerce, activates it and keeps it active (WordPress
+  can't update, deactivate or delete it; only a parent release changes it). See the parent's
+  `inc/bundled-plugins/AGENT.md`.
 
 ## [1.0.0] — 2026-10-11
 

@@ -39,6 +39,7 @@
 // Client-specific overrides of parent theme defaults.
 require_once __DIR__ . '/inc/overrides/ase.php';
 require_once __DIR__ . '/inc/overrides/admin-menu.php';
+require_once __DIR__ . '/inc/overrides/woocommerce.php';
 
 // This client site's own content: forms, post types, extra schema types.
 require_once __DIR__ . '/inc/content/forms.php';
