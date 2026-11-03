@@ -41,7 +41,7 @@ surprising amount of what looks like it needs overriding is just this.
    this theme to that exact directory name, and that stable name is what
    lets one release update every client site.
 4. **Activate this theme**, not the parent.
-5. **Enter the licence keys** under Theme Settings → Licence.
+5. **Enter the licence key** under Theme Settings → Licence: one key for the site. In Warden it carries two apps, tagged `parent-theme` (the base theme) and `child-theme` (this theme). With Brand Relay it is provisioned for you (the param `warden_licence_key`).
 6. Build.
 
 WordPress refuses to activate a child whose parent is missing, so a wrong

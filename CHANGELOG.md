@@ -11,6 +11,14 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.2.1] — 2026-11-03
+
+Requires the parent theme 1.18.0 or later for the single licence key.
+
+### Changed
+
+- README: a site has ONE Warden licence key (parent 1.18.0), carrying two apps tagged `parent-theme` and `child-theme`.
+
 ## [1.2.0] — 2026-11-03
 
 ### Added
