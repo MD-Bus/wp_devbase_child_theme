@@ -11,6 +11,21 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-11-03
+
+### Added
+
+- **The payment kill switch is part of the starter** (`inc/suspension/`), taken from the OCWOF site and made
+  generic (`devbase_child_*` names, neutral blocked page, no contact address until you set one in
+  `config.php`). The site follows its Warden licence status: Suspended in Warden means public visitors get a
+  503 page, `wp-admin` and `wp-login.php` stay open, only `suspended` locks, and a failed check changes
+  nothing. It lives in the child on purpose so a parent release cannot remove it. Inert until the site has a
+  licence key.
+
+### Changed
+
+- README: the shop switch and the kill switch.
+
 ## [1.1.1] — 2026-11-03
 
 ### Changed

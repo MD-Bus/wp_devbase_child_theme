@@ -55,6 +55,7 @@ inc/
     ase.php          admin hardening settings
     admin-menu.php   which wp-admin menu items are hidden
     woocommerce.php  makes this site a shop (WooCommerce required) — off
+  suspension/    payment kill switch (follows the Warden licence status)
   content/       this client's own structures
     forms.php        the site's forms
     post-types.php   the site's post types and taxonomies
@@ -101,7 +102,6 @@ add_filter( 'devbase/admin_menu/hidden_items', function ( $items ) {
 | `devbase/forms/registered_forms` | Register this site's forms. |
 | `devbase/admin_menu/hidden_items` | Change which admin menu items are hidden. |
 | `devbase/required_plugins` | Plugins this site needs that the parent ships (`woocommerce`). Off by default in `inc/overrides/woocommerce.php`. |
-| `devbase/suspension/enabled`, `devbase/suspension/config` | Turn on the payment kill switch and set its blocked page. Not enabled in the starter. |
 | `devbase/schema/tabs` | Contribute an extra schema.org type. |
 
 **For per-client settings you almost always want `enforced`.** Any site
@@ -113,31 +113,24 @@ naming one specific key removes that ambiguity.
 The cost of enforcing: that setting can no longer be changed in wp-admin,
 because it reverts on the next page load. Use it deliberately.
 
-## Optional parts of the parent
+## The shop switch and the payment kill switch
 
-Two features live in the parent theme (1.15.0 and 1.16.0) and are off until this
-child asks.
+**A shop (parent 1.15.0+).** `inc/overrides/woocommerce.php` is already here with
+`$is_shop = false`. Set it to `true` and the parent installs the WooCommerce it
+ships, activates it and keeps it active. WordPress can no longer update,
+deactivate or delete it: only a parent release changes its version, and a
+release never downgrades it. Switching to a theme that doesn't need it removes
+the files and leaves the shop's data.
 
-**A shop.** `inc/overrides/woocommerce.php` is already here with `$is_shop = false`.
-Set it to `true` and the parent installs the WooCommerce it ships, activates it
-and keeps it active. WordPress can no longer update, deactivate or delete it:
-only a parent release changes its version, and a release never downgrades it.
-Switching to a theme that doesn't need it removes the files and leaves the
-shop's data.
-
-**The payment kill switch.** Not wired in the starter. To use it, add:
-
-```php
-add_filter( 'devbase/suspension/enabled', '__return_true' );
-add_filter( 'devbase/suspension/config', function ( $config ) {
-    $config['contact'] = 'https://example.com';
-    return $config;
-} );
-```
-
-The site then follows its Warden licence status (Suspended means a 503 page for
-visitors; `wp-admin` stays open). Both are explained in the parent's
-`inc/bundled-plugins/AGENT.md` and `inc/suspension/AGENT.md`.
+**The payment kill switch (this theme, `inc/suspension/`).** It lives here, not
+in the parent, so a parent release can never remove or change it. The site
+follows its Warden licence status: set the licence to **Suspended** in Warden and
+public visitors get a 503 "unavailable" page at the next licence check; set it
+back and the site is restored. `wp-admin` and `wp-login.php` stay open, only the
+status `suspended` locks, and a failed check never changes anything. It does
+nothing until the site has a licence key. Put your address in
+`inc/suspension/config.php` (`contact`) and keep `'suspended' => false` in
+releases. Rules and testing: `inc/suspension/AGENT.md`.
 
 ## Registering this site's content
 

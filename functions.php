@@ -36,6 +36,10 @@
 //
 // Every stub in inc/ below follows that rule. Copy their shape.
 
+// Payment kill switch (switch and settings live in inc/suspension/config.php). Follows the Warden
+// licence status; inert until this site has a licence key. See inc/suspension/AGENT.md.
+require_once __DIR__ . '/inc/suspension/suspension.php';
+
 // Client-specific overrides of parent theme defaults.
 require_once __DIR__ . '/inc/overrides/ase.php';
 require_once __DIR__ . '/inc/overrides/admin-menu.php';
