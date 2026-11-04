@@ -11,6 +11,13 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.4.0] — 2026-11-03
+
+### Removed
+
+- `inc/overrides/developers.php` (added in 1.3.0). The parent theme dropped its developer-logins list in 1.22.0, in favour of a
+  "Lock remote setup" switch under Theme Settings > Miscellaneous > Management, so nothing reads the list any more.
+
 ## [1.3.0] — 2026-11-03
 
 Requires the parent theme 1.21.0 or later.
