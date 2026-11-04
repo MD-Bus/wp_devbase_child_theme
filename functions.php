@@ -44,6 +44,7 @@ require_once __DIR__ . '/inc/suspension/suspension.php';
 require_once __DIR__ . '/inc/overrides/ase.php';
 require_once __DIR__ . '/inc/overrides/admin-menu.php';
 require_once __DIR__ . '/inc/overrides/woocommerce.php';
+require_once __DIR__ . '/inc/overrides/developers.php';
 
 // This client site's own content: forms, post types, extra schema types.
 require_once __DIR__ . '/inc/content/forms.php';

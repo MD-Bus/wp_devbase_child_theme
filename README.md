@@ -55,6 +55,7 @@ inc/
     ase.php          admin hardening settings
     admin-menu.php   which wp-admin menu items are hidden
     woocommerce.php  makes this site a shop (WooCommerce required) — off
+    developers.php   the developer logins: who still sees the developer-only settings
   suspension/    payment kill switch (follows the Warden licence status)
   content/       this client's own structures
     forms.php        the site's forms

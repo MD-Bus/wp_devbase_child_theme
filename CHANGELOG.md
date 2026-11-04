@@ -11,6 +11,16 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.3.0] — 2026-11-03
+
+Requires the parent theme 1.21.0 or later.
+
+### Added
+
+- **`inc/overrides/developers.php`**: names the developer logins once (`devbase/developer_logins`). From the parent's
+  1.21.0 the Credit tab and the Licence page's Remote setup tab are hidden from everyone else. Edit the list for
+  your own agency, or use `DEVBASE_DEVELOPER_LOGINS` in `wp-config.php` if the repository is public.
+
 ## [1.2.1] — 2026-11-03
 
 Requires the parent theme 1.18.0 or later for the single licence key.
