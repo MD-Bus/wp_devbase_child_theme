@@ -11,6 +11,8 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.4.1] — 2026-11-05
+
 ### Security
 
 - **XML-RPC is off while the site is suspended.** `xmlrpc.php` bypassed the blocked page, the admin-ajax/admin-post check and the REST API check.
