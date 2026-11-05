@@ -122,6 +122,15 @@ add_filter( 'rest_authentication_errors', function ( $result ) {
 	return $result;
 }, 1 );
 
+// xmlrpc.php bypasses template_redirect, admin_init and the REST API alike: off while suspended.
+// (xmlrpc_enabled only covers the methods that log in; pingbacks and the rest go with xmlrpc_methods.)
+add_filter( 'xmlrpc_enabled', function ( $enabled ) {
+	return devbase_child_is_suspended() ? false : $enabled;
+} );
+add_filter( 'xmlrpc_methods', function ( $methods ) {
+	return devbase_child_is_suspended() ? array() : $methods;
+} );
+
 // While suspended the theme/plugin code editors are off even if wp-config allows them,
 // so the switch cannot be flipped from inside the dashboard.
 add_filter( 'map_meta_cap', function ( $caps, $cap ) {

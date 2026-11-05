@@ -11,6 +11,14 @@ starter itself.
 
 ## [Unreleased]
 
+### Security
+
+- **XML-RPC is off while the site is suspended.** `xmlrpc.php` bypassed the blocked page, the admin-ajax/admin-post check and the REST API check.
+
+### Fixed
+
+- `bin/bump-version.sh` works on Linux and in CI (it used the BSD-only `sed -i ''`).
+
 ## [1.4.0] — 2026-11-03
 
 ### Removed
