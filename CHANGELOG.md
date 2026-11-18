@@ -11,6 +11,16 @@ starter itself.
 
 ## [Unreleased]
 
+## [1.4.2] — 2026-11-17
+
+### Fixed
+
+- **`inc/content/schema.php` described a mechanism the parent no longer has.** It filtered `devbase/schema/tabs` to add a tab to the Schema Markup page; the parent removed both in 1.37.0, when SEO moved to The SEO Framework, so a type added that way never showed. The stub now adds types through TSF's own `the_seo_framework_schema_graph_data` filter, with a commented FAQPage example, and says where a type's settings go (an options page under Theme Settings, which becomes a section of the Theme Settings screen). Still inert until uncommented.
+
+### Changed
+
+- README: the parent link is a full GitHub URL, the licence step says the key is provisioned by Brand Relay through Remote setup, the list of what the parent provides is current, and the licence link points to `License.md`. New screenshots.
+
 ## [1.4.1] — 2026-11-05
 
 ### Security
