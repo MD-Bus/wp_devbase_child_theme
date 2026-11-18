@@ -2,10 +2,10 @@
 
 The starter child theme for a client site. Copy it, rename it for
 the client, and build that site here — while the
-[Dev Base Parent Theme](../wp_devbase_parent_theme) underneath provides
+[Dev Base Parent Theme](https://github.com/MD-Bus/wp_devbase_parent_theme) underneath provides
 everything shared, and keeps updating itself.
 
-![The front end this ships with](docs/screenshots/front-end.png)
+![The front end this ships with](docs/screenshots/front-end.jpg)
 
 ---
 
@@ -22,13 +22,16 @@ The split is **code that varies per client** against **code that doesn't**
 
 **In the parent**
 
-- Everything shared: SMTP, CAPTCHA, tracking, schema, form logging and
-  dispatch, MCP abilities, the update system
+- Everything shared: the Theme Settings screen, email (SMTP or an email
+  API), CAPTCHA, tracking, cache, SEO (The SEO Framework and Organization
+  Details), form logging, dispatch and the Submissions screen, MCP
+  abilities, the Guide, backups, the update system
 
 **Neither — it's already per-site data**
 
-SMTP credentials, CAPTCHA keys, analytics IDs, organisation details, form
-destinations, retention policy, MCP access, licence keys. All entered in
+Email credentials, CAPTCHA keys, analytics IDs, organisation details, form
+destinations, retention policy, cache and Cloudflare settings, MCP access,
+licence keys. All entered in
 wp-admin and stored in that site's own database. No code anywhere. A
 surprising amount of what looks like it needs overriding is just this.
 
@@ -41,7 +44,7 @@ surprising amount of what looks like it needs overriding is just this.
    this theme to that exact directory name, and that stable name is what
    lets one release update every client site.
 4. **Activate this theme**, not the parent.
-5. **Enter the licence key** under Theme Settings → Licence: one key for the site. In Warden it carries two apps, tagged `parent-theme` (the base theme) and `child-theme` (this theme). With Brand Relay it is provisioned for you (the param `warden_licence_key`).
+5. **Connect the licence.** One key covers the site; in Warden it carries two apps, tagged `parent-theme` (the base theme) and `child-theme` (this theme). It is provisioned by Brand Relay (the param `warden_licence_key`) and shown read-only under Theme Settings → Licence & Updates → Licence. To connect a site, enter the Management server address and Site access key on that page's Remote setup tab (hidden while **Lock remote setup** is on); see the parent's README, *Provisioning from Brand Relay*.
 6. Build.
 
 WordPress refuses to activate a child whose parent is missing, so a wrong
@@ -59,7 +62,7 @@ inc/
   content/       this client's own structures
     forms.php        the site's forms
     post-types.php   the site's post types and taxonomies
-    schema.php       extra schema.org types
+    schema.php       extra schema.org types (stub, see below)
 views/           Twig templates — resolved child-first, so these win
 assets/          CSS and JavaScript, enqueued from functions.php
 languages/       this theme's own translations
@@ -102,7 +105,7 @@ add_filter( 'devbase/admin_menu/hidden_items', function ( $items ) {
 | `devbase/forms/registered_forms` | Register this site's forms. |
 | `devbase/admin_menu/hidden_items` | Change which admin menu items are hidden. |
 | `devbase/required_plugins` | Plugins this site needs that the parent ships (`woocommerce`). Off by default in `inc/overrides/woocommerce.php`. |
-| `devbase/schema/tabs` | Contribute an extra schema.org type. |
+| `the_seo_framework_schema_graph_data` | The SEO Framework's own filter: add an extra schema.org type (Product, FAQPage, LocalBusiness...) to the page's JSON-LD graph. The parent's old `devbase/schema/tabs` filter is gone. |
 
 **For per-client settings you almost always want `enforced`.** Any site
 that has been running has most settings already stored, so `defaults` only
@@ -135,9 +138,10 @@ releases. Rules and testing: `inc/suspension/AGENT.md`.
 ## Registering this site's content
 
 Post types go in `inc/content/post-types.php`, registered on `init` at the
-default priority. Three base-theme features then pick them up with no
-further wiring: an archive options page, the archive in the internal link
-picker, and an MCP Access entry.
+default priority. Base-theme features then pick them up with no further
+wiring: a section of its own under Theme Settings → Content for the archive's
+fields and its SEO title and description, the archive in the internal link
+picker and the sitemap, and an MCP Access entry.
 
 ```php
 add_action( 'init', function () {
@@ -210,9 +214,9 @@ This theme has its own release track in [Warden](https://github.com/momardia54/W
 parent's — so a client site's own theme can be released without touching
 the parent, and vice versa.
 
-![Both themes, tracked separately](docs/screenshots/licence-status.png)
+![Both themes, tracked separately (Theme Settings > Licence & Updates > Status)](docs/screenshots/licence-status.jpg)
 
 ## Licence
 
-GPL v2 or later — see [LICENSE](LICENSE). Inherited from the parent theme,
+GPL v2 or later — see [License.md](License.md). Inherited from the parent theme,
 which bundles GPLv2+ code.
